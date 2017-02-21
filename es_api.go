@@ -155,6 +155,7 @@ func getSeriesByRate(rate string) []Serie{
 	return series
 }
 
+// Create a new serie in the index series.
 func createSerie(serie Serie) Serie{
 
 	// Create a context
@@ -173,9 +174,7 @@ func createSerie(serie Serie) Serie{
 	_, err = client.Index().
 		Index("series").
 		Type("serie").
-		//Id("1").
 		BodyJson(createdSerie).
-		//Refresh(true).
 		Do(ctx)
 	if err != nil {
 		// Handle error
